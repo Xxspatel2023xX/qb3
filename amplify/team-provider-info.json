@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-qb3-staging-201019-authRole",
+      "UnauthRoleArn": "arn:aws:iam::011426014637:role/amplify-qb3-staging-201019-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::011426014637:role/amplify-qb3-staging-201019-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-qb3-staging-201019-deployment",
+      "UnauthRoleName": "amplify-qb3-staging-201019-unauthRole",
+      "StackName": "amplify-qb3-staging-201019",
+      "StackId": "arn:aws:cloudformation:us-east-1:011426014637:stack/amplify-qb3-staging-201019/64a95ac0-c7f8-11ec-9b8e-12797743054f",
+      "AmplifyAppId": "d3n34nkeyzzgu3"
+    },
+    "categories": {
+      "auth": {
+        "qb3": {}
+      }
+    }
+  }
+}

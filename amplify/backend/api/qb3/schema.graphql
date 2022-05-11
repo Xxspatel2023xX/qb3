@@ -1,0 +1,7 @@
+type Question @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Category: String
+  Points: String
+  ActualQuestion: String
+  Answer: String
+}
