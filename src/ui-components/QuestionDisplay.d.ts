@@ -5,8 +5,8 @@
  **************************************************************************/
 
 import React from "react";
-import { Question } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { Question } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type QuestionDisplayProps = React.PropsWithChildren<Partial<FlexProps> & {
     question?: Question;

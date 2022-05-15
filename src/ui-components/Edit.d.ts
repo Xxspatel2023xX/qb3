@@ -8,9 +8,9 @@ import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { Question } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
-export declare type AddProps = React.PropsWithChildren<Partial<FlexProps> & {
+export declare type EditProps = React.PropsWithChildren<Partial<FlexProps> & {
     question?: Question;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function Add(props: AddProps): React.ReactElement;
+export default function Edit(props: EditProps): React.ReactElement;

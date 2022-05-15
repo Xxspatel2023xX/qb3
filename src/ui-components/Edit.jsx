@@ -8,11 +8,13 @@
 import React from "react";
 import {
   getOverrideProps,
-  useDataStoreCreateAction,
+  useDataStoreUpdateAction,
+  useNavigateAction,
   useStateMutationAction,
 } from "@aws-amplify/ui-react/internal";
 import { Question } from "../models";
 import { schema } from "../models/schema";
+import { useEffect } from "react";
 import {
   Button,
   Divider,
@@ -22,29 +24,57 @@ import {
   TextField,
   View,
 } from "@aws-amplify/ui-react";
-export default function Add(props) {
+export default function Edit(props) {
   const { question, overrides, ...rest } = props;
   const [
-    textFieldThreeZeroNineNineThreeOneTwoTwoValue,
-    setTextFieldThreeZeroNineNineThreeOneTwoTwoValue,
+    textFieldThreeOneFourNineTwoNineFiveThreeValue,
+    setTextFieldThreeOneFourNineTwoNineFiveThreeValue,
   ] = useStateMutationAction("");
   const [
-    textFieldThreeZeroNineNineThreeOneTwoThreeValue,
-    setTextFieldThreeZeroNineNineThreeOneTwoThreeValue,
+    textFieldThreeOneFourNineTwoNineFiveFourValue,
+    setTextFieldThreeOneFourNineTwoNineFiveFourValue,
   ] = useStateMutationAction("");
   const [
-    textFieldThreeZeroNineNineThreeOneTwoFourValue,
-    setTextFieldThreeZeroNineNineThreeOneTwoFourValue,
+    textFieldThreeOneFourNineTwoNineFiveFiveValue,
+    setTextFieldThreeOneFourNineTwoNineFiveFiveValue,
   ] = useStateMutationAction("");
-  const buttonOnClick = useDataStoreCreateAction({
+  const buttonOnClick = useDataStoreUpdateAction({
     fields: {
-      Category: textFieldThreeZeroNineNineThreeOneTwoTwoValue,
-      ActualQuestion: textFieldThreeZeroNineNineThreeOneTwoThreeValue,
-      Answer: textFieldThreeZeroNineNineThreeOneTwoFourValue,
+      Category: textFieldThreeOneFourNineTwoNineFiveThreeValue,
+      ActualQuestion: textFieldThreeOneFourNineTwoNineFiveFourValue,
+      Answer: textFieldThreeOneFourNineTwoNineFiveFiveValue,
     },
+    id: question?.id,
     model: Question,
     schema: schema,
   });
+  const buttonOnMouseUp = useNavigateAction({ type: "url", url: "/" });
+  useEffect(() => {
+    if (
+      textFieldThreeOneFourNineTwoNineFiveThreeValue === "" &&
+      question !== undefined &&
+      question?.Category !== undefined
+    )
+      setTextFieldThreeOneFourNineTwoNineFiveThreeValue(question?.Category);
+  }, [question]);
+  useEffect(() => {
+    if (
+      textFieldThreeOneFourNineTwoNineFiveFourValue === "" &&
+      question !== undefined &&
+      question?.ActualQuestion !== undefined
+    )
+      setTextFieldThreeOneFourNineTwoNineFiveFourValue(
+        question?.ActualQuestion
+      );
+  }, [question]);
+  useEffect(() => {
+    if (
+      textFieldThreeOneFourNineTwoNineFiveFiveValue === "" &&
+      question !== undefined &&
+      question?.Answer !== undefined
+    )
+      setTextFieldThreeOneFourNineTwoNineFiveFiveValue(question?.Answer);
+  }, [question]);
   return (
     <Flex
       gap="16px"
@@ -54,7 +84,7 @@ export default function Add(props) {
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
-      {...getOverrideProps(overrides, "Add")}
+      {...getOverrideProps(overrides, "Edit")}
     >
       <Flex
         gap="24px"
@@ -119,8 +149,8 @@ export default function Add(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Question Profile"
-            {...getOverrideProps(overrides, "Question Profile")}
+            children="Edit Question Profile"
+            {...getOverrideProps(overrides, "Edit Question Profile")}
           ></Text>
         </Flex>
         <Divider
@@ -132,7 +162,7 @@ export default function Add(props) {
           padding="0px 0px 0px 0px"
           size="small"
           orientation="horizontal"
-          {...getOverrideProps(overrides, "Divider30993117")}
+          {...getOverrideProps(overrides, "Divider31492948")}
         ></Divider>
         <Flex
           gap="16px"
@@ -155,18 +185,18 @@ export default function Add(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             label="Category"
-            placeholder={question?.Category}
+            placeholder="John Doe"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeZeroNineNineThreeOneTwoTwoValue}
+            value={textFieldThreeOneFourNineTwoNineFiveThreeValue}
             onChange={(event) => {
-              setTextFieldThreeZeroNineNineThreeOneTwoTwoValue(
+              setTextFieldThreeOneFourNineTwoNineFiveThreeValue(
                 event.target.value
               );
             }}
-            {...getOverrideProps(overrides, "TextField30993122")}
+            {...getOverrideProps(overrides, "TextField31492953")}
           ></TextField>
           <TextField
             display="flex"
@@ -178,19 +208,19 @@ export default function Add(props) {
             objectFit="cover"
             position="relative"
             padding="0px 0px 0px 0px"
-            label={`${question?.ActualQuestion}${" question E.g."}`}
+            label="Question"
             placeholder="Seattle, WA"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeZeroNineNineThreeOneTwoThreeValue}
+            value={textFieldThreeOneFourNineTwoNineFiveFourValue}
             onChange={(event) => {
-              setTextFieldThreeZeroNineNineThreeOneTwoThreeValue(
+              setTextFieldThreeOneFourNineTwoNineFiveFourValue(
                 event.target.value
               );
             }}
-            {...getOverrideProps(overrides, "TextField30993123")}
+            {...getOverrideProps(overrides, "TextField31492954")}
           ></TextField>
           <TextField
             display="flex"
@@ -208,13 +238,13 @@ export default function Add(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeZeroNineNineThreeOneTwoFourValue}
+            value={textFieldThreeOneFourNineTwoNineFiveFiveValue}
             onChange={(event) => {
-              setTextFieldThreeZeroNineNineThreeOneTwoFourValue(
+              setTextFieldThreeOneFourNineTwoNineFiveFiveValue(
                 event.target.value
               );
             }}
-            {...getOverrideProps(overrides, "TextField30993124")}
+            {...getOverrideProps(overrides, "TextField31492955")}
           ></TextField>
         </Flex>
         <Divider
@@ -226,7 +256,7 @@ export default function Add(props) {
           padding="0px 0px 0px 0px"
           size="small"
           orientation="horizontal"
-          {...getOverrideProps(overrides, "Divider30993125")}
+          {...getOverrideProps(overrides, "Divider31492956")}
         ></Divider>
         <Button
           display="flex"
@@ -243,6 +273,9 @@ export default function Add(props) {
           children="Save"
           onClick={() => {
             buttonOnClick();
+          }}
+          onMouseUp={() => {
+            buttonOnMouseUp();
           }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>

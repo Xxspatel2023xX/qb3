@@ -6,11 +6,25 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useDataStoreDeleteAction,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
+import { Question } from "../models";
+import { schema } from "../models/schema";
 import { Divider, Flex, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function QuestionDisplay(props) {
   const { question, overrides, ...rest } = props;
+  const frameThreeZeroSevenSevenTwoEightFourOneOnClick =
+    useDataStoreDeleteAction({
+      id: question?.id,
+      model: Question,
+      schema: schema,
+    });
+  const loremipsumdolorsitametCommaconsecteturadipiscingelitPeriodOnClick =
+    useNavigateAction({ type: "url", url: `${"/edit/"}${question?.id}` });
   return (
     <Flex
       gap="16px"
@@ -140,7 +154,7 @@ export default function QuestionDisplay(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
-                children={question?.id}
+                children={`${question?.id}${" delete"}`}
                 {...getOverrideProps(overrides, "Lorem ipsum")}
               ></Text>
             </Flex>
@@ -155,6 +169,9 @@ export default function QuestionDisplay(props) {
               height="24px"
               position="relative"
               padding="0px 0px 0px 0px"
+              onClick={() => {
+                frameThreeZeroSevenSevenTwoEightFourOneOnClick();
+              }}
               {...getOverrideProps(overrides, "Frame30772841")}
             >
               <MyIcon
@@ -187,6 +204,9 @@ export default function QuestionDisplay(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children={question?.ActualQuestion}
+            onClick={() => {
+              loremipsumdolorsitametCommaconsecteturadipiscingelitPeriodOnClick();
+            }}
             {...getOverrideProps(
               overrides,
               "\u201CLorem ipsum dolor sit amet, consectetur adipiscing elit. \u201D"

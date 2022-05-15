@@ -6,13 +6,7 @@
 
 /* eslint-disable */
 import React from "react";
-import {
-  getOverrideProps,
-  useDataStoreCreateAction,
-  useStateMutationAction,
-} from "@aws-amplify/ui-react/internal";
-import { Question } from "../models";
-import { schema } from "../models/schema";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import {
   Button,
   Divider,
@@ -22,29 +16,8 @@ import {
   TextField,
   View,
 } from "@aws-amplify/ui-react";
-export default function Add(props) {
-  const { question, overrides, ...rest } = props;
-  const [
-    textFieldThreeZeroNineNineThreeOneTwoTwoValue,
-    setTextFieldThreeZeroNineNineThreeOneTwoTwoValue,
-  ] = useStateMutationAction("");
-  const [
-    textFieldThreeZeroNineNineThreeOneTwoThreeValue,
-    setTextFieldThreeZeroNineNineThreeOneTwoThreeValue,
-  ] = useStateMutationAction("");
-  const [
-    textFieldThreeZeroNineNineThreeOneTwoFourValue,
-    setTextFieldThreeZeroNineNineThreeOneTwoFourValue,
-  ] = useStateMutationAction("");
-  const buttonOnClick = useDataStoreCreateAction({
-    fields: {
-      Category: textFieldThreeZeroNineNineThreeOneTwoTwoValue,
-      ActualQuestion: textFieldThreeZeroNineNineThreeOneTwoThreeValue,
-      Answer: textFieldThreeZeroNineNineThreeOneTwoFourValue,
-    },
-    model: Question,
-    schema: schema,
-  });
+export default function Delete(props) {
+  const { overrides, ...rest } = props;
   return (
     <Flex
       gap="16px"
@@ -54,7 +27,7 @@ export default function Add(props) {
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
-      {...getOverrideProps(overrides, "Add")}
+      {...getOverrideProps(overrides, "Delete")}
     >
       <Flex
         gap="24px"
@@ -119,8 +92,8 @@ export default function Add(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Question Profile"
-            {...getOverrideProps(overrides, "Question Profile")}
+            children="Edit Question Profile"
+            {...getOverrideProps(overrides, "Edit Question Profile")}
           ></Text>
         </Flex>
         <Divider
@@ -132,7 +105,7 @@ export default function Add(props) {
           padding="0px 0px 0px 0px"
           size="small"
           orientation="horizontal"
-          {...getOverrideProps(overrides, "Divider30993117")}
+          {...getOverrideProps(overrides, "Divider31542929")}
         ></Divider>
         <Flex
           gap="16px"
@@ -155,18 +128,12 @@ export default function Add(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             label="Category"
-            placeholder={question?.Category}
+            placeholder="John Doe"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeZeroNineNineThreeOneTwoTwoValue}
-            onChange={(event) => {
-              setTextFieldThreeZeroNineNineThreeOneTwoTwoValue(
-                event.target.value
-              );
-            }}
-            {...getOverrideProps(overrides, "TextField30993122")}
+            {...getOverrideProps(overrides, "TextField31542931")}
           ></TextField>
           <TextField
             display="flex"
@@ -178,19 +145,13 @@ export default function Add(props) {
             objectFit="cover"
             position="relative"
             padding="0px 0px 0px 0px"
-            label={`${question?.ActualQuestion}${" question E.g."}`}
+            label="Question"
             placeholder="Seattle, WA"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeZeroNineNineThreeOneTwoThreeValue}
-            onChange={(event) => {
-              setTextFieldThreeZeroNineNineThreeOneTwoThreeValue(
-                event.target.value
-              );
-            }}
-            {...getOverrideProps(overrides, "TextField30993123")}
+            {...getOverrideProps(overrides, "TextField31542932")}
           ></TextField>
           <TextField
             display="flex"
@@ -208,13 +169,7 @@ export default function Add(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeZeroNineNineThreeOneTwoFourValue}
-            onChange={(event) => {
-              setTextFieldThreeZeroNineNineThreeOneTwoFourValue(
-                event.target.value
-              );
-            }}
-            {...getOverrideProps(overrides, "TextField30993124")}
+            {...getOverrideProps(overrides, "TextField31542933")}
           ></TextField>
         </Flex>
         <Divider
@@ -226,7 +181,7 @@ export default function Add(props) {
           padding="0px 0px 0px 0px"
           size="small"
           orientation="horizontal"
-          {...getOverrideProps(overrides, "Divider30993125")}
+          {...getOverrideProps(overrides, "Divider31542934")}
         ></Divider>
         <Button
           display="flex"
@@ -241,9 +196,6 @@ export default function Add(props) {
           isDisabled={false}
           variation="primary"
           children="Save"
-          onClick={() => {
-            buttonOnClick();
-          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>

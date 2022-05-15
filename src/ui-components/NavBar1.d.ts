@@ -6,11 +6,8 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { Question } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
-export declare type AddProps = React.PropsWithChildren<Partial<FlexProps> & {
-    question?: Question;
-} & {
+export declare type NavBar1Props = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function Add(props: AddProps): React.ReactElement;
+export default function NavBar1(props: NavBar1Props): React.ReactElement;
