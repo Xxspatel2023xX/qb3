@@ -8,6 +8,7 @@
 import React from "react";
 import {
   getOverrideProps,
+  useAuthSignOutAction,
   useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
 import {
@@ -20,6 +21,8 @@ import {
 } from "@aws-amplify/ui-react";
 export default function NavBar1(props) {
   const { overrides, ...rest } = props;
+  const logoOnClick = useAuthSignOutAction({ global: false });
+  const starOneOnClick = useAuthSignOutAction({ global: false });
   const editOnClick = useNavigateAction({ type: "url", url: "/" });
   const addOnClick = useNavigateAction({ type: "url", url: "/new" });
   const deleteOnClick = useNavigateAction({ type: "url", url: "/" });
@@ -47,6 +50,9 @@ export default function NavBar1(props) {
         alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
+        onClick={() => {
+          logoOnClick();
+        }}
         {...getOverrideProps(overrides, "Logo")}
       >
         <Icon
@@ -62,6 +68,9 @@ export default function NavBar1(props) {
           ]}
           shrink="0"
           position="relative"
+          onClick={() => {
+            starOneOnClick();
+          }}
           {...getOverrideProps(overrides, "Star 1")}
         ></Icon>
       </Flex>
